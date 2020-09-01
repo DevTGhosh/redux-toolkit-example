@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button, Input, HStack } from '@chakra-ui/core';
 import { AddIcon } from '@chakra-ui/icons';
+import { addTodo } from '../../redux/slices/todoSlice';
 
 export default function AddTodo() {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
   const handleChange = event => setValue(event.target.value);
   const handleSubmit = event => {
     event.preventDefault();
     if (value !== '') {
-      // TODO: When Todo isn't an empty string dispatch the input value to the Redux Store
-      console.count('Add Todo Function');
+      dispatch(addTodo(value));
+      setValue('');
     }
   };
   return (
