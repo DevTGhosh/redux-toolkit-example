@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Box, VStack, Text, Checkbox } from '@chakra-ui/core';
 
 export default function TodoList() {
@@ -6,10 +7,8 @@ export default function TodoList() {
     //TODO: When checkbox is checked remove the todo from the redux store
     console.count('Checkbox function');
   };
-  // TODO: Get the data for todoListData from the redux store
-  const todoListdata = [
-    { key: 'unique id', value: 'Do the Redux Toolkit Talk' },
-  ];
+
+  const todoListdata = useSelector(state => state.todos.todoList);
 
   return (
     <>
