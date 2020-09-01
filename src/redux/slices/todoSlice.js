@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 export const todoSlice = createSlice({
   name: 'todos',
@@ -6,8 +6,18 @@ export const todoSlice = createSlice({
     todoList: [],
   },
   reducers: {
-    addTodo: (state, action) => {
-      state.todoList.push(action.payload);
+    addTodo: {
+      reducer: (state, action) => {
+        state.todoList.push(action.payload);
+      },
+      prepare(value) {
+        return {
+          payload: {
+            key: nanoid(),
+            value: value,
+          },
+        };
+      },
     },
   },
 });
