@@ -1,14 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, VStack, Text, Checkbox } from '@chakra-ui/core';
+import { fetchTodos } from '../../redux/slices/todoSlice';
 
 export default function TodoList() {
+  const dispatch = useDispatch();
+  const todoListdata = useSelector(state => state.todos.todoList);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
   const handleCheck = event => {
     //TODO: When checkbox is checked remove the todo from the redux store
     console.count('Checkbox function');
   };
-
-  const todoListdata = useSelector(state => state.todos.todoList);
 
   return (
     <>

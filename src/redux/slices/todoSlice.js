@@ -1,9 +1,19 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
+  const response = await axios.get(
+    'https://eager-supreme-appalachiosaurus.glitch.me/todos'
+  );
+  return response.data.todoList;
+});
 
 export const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todoList: [],
+    status: 'idle',
+    error: null,
   },
   reducers: {
     addTodo: {
@@ -18,6 +28,19 @@ export const todoSlice = createSlice({
           },
         };
       },
+    },
+  },
+  extraReducers: {
+    [fetchTodos.pending]: (state, action) => {
+      state.status = 'loading';
+    },
+    [fetchTodos.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      state.todoList.push(...action.payload);
+    },
+    [fetchTodos.rejected]: (state, action) => {
+      state.status = 'failed';
+      state.error = action.payload;
     },
   },
 });
