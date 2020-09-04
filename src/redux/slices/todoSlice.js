@@ -40,7 +40,7 @@ export const todoSlice = createSlice({
     },
     [fetchTodos.rejected]: (state, action) => {
       state.status = 'failed';
-      state.error = action.payload;
+      state.error = action.error.message;
     },
   },
 });
