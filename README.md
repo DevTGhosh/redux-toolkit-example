@@ -2,6 +2,11 @@
 
 This app was created to showcase Redux Toolkit at React Online Meetup.
 
+## Slide
+
+- [Theory](https://redux-theory-deck.netlify.app/)
+- [Code](https://redux-code-presentation.netlify.app/0)
+
 ## How to use this App
 
 The master branch is site with Redux & Exercise. You can try the exercise on [CodeSandbox](https://codesandbox.io/s/devtghoshredux-toolkit-example-wb1j2?file=/src/components/todoList/index.js)
