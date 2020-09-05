@@ -8,7 +8,7 @@ The master branch is site with Redux & Exercise. You can try the exercise on [Co
 
 The answer branch is the solution to the checkbox exercise.
 
-The base branch is the site without ay of the Redux functionality.
+The base branch is the site without ay of the Redux functionality. Try recreating the redux functionality on [CodeSandbox](https://codesandbox.io/s/practical-sutherland-xlln7)
 
 ## How to run this App
 
